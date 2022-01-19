@@ -1,0 +1,15 @@
+.ToDo, .ToDo-edit-form
+{
+    display: inline-block;
+}
+
+.ToDo-edit-btn, .ToDo-edit-form, .ToDo-edit-input, .ToDo-complete-btn, .ToDo-remove-btn
+{
+    margin-left: 1rem;
+}
+
+.completed
+{
+    text-decoration: line-through;
+    color: rgba(0,0,0, 0.7);
+}
