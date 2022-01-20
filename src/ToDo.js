@@ -39,7 +39,7 @@ class ToDo extends Component
                             <input className="ToDo-edit-input" type="text" name="editText" value={this.state.editText} onChange={this.handleChange} />
 
                         </form>
-                        : <span className={this.state.isCompleted ? 'completed' : ''} onClick={() => this.setState({ isEditing: true })}>{this.props.task}</span>
+                        : <span className={this.props.isCompleted ? 'completed' : ''} onClick={() => this.setState({ isEditing: true })}>{this.props.task}</span>
                 }
                 {/* <button className="ToDo-edit-btn" onClick={() => this.setState({ isEditing: true })}>Edit</button>
                 {
@@ -50,7 +50,7 @@ class ToDo extends Component
                             <button>Submit</button>
                         </form>)
                 } */}
-                <button className="ToDo-complete-btn" onClick={() => this.setState({ isCompleted: true })}>Mark as completed</button>
+                <button className="ToDo-complete-btn" onClick={() => this.props.markComplete(this.props.taskId)}>Mark as completed</button>
                 <button className="ToDo-remove-btn" onClick={this.handleRemove}>X</button>
             </div>
         );
