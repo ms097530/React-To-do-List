@@ -50,7 +50,7 @@ class ToDo extends Component
                             <button>Submit</button>
                         </form>)
                 } */}
-                <button className="ToDo-complete-btn" onClick={() => this.props.markComplete(this.props.taskId)}>Mark as completed</button>
+                <button className="ToDo-complete-btn" onClick={() => this.props.markComplete(this.props.taskId)}>{this.props.isCompleted ? 'Mark as incomplete' : 'Mark as complete'}</button>
                 <button className="ToDo-remove-btn" onClick={this.handleRemove}>X</button>
             </div>
         );

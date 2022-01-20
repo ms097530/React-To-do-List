@@ -18,7 +18,6 @@ class ToDoList extends Component
 
     addTask(task)
     {
-        // console.log(task);
         this.setState(currState => ({ tasks: [...currState.tasks, task] }), () => { localStorage.setItem('tasks', JSON.stringify(this.state.tasks)); });
 
     }
@@ -32,36 +31,25 @@ class ToDoList extends Component
 
     editToDo(task)
     {
-        let copy = this.state.tasks.map(task => task);
-        let index;
-        for (let i = 0; i < this.state.tasks.length; ++i)
+        const editedTodos = this.state.tasks.map(todo =>
         {
-            if (this.state.tasks[i].taskId === task.taskId)
-            {
-                index = i;
-                break;
-            }
-        }
-
-        // let index = getIndex();
-        copy[index] = task;
-        this.setState({ tasks: copy }, () => { localStorage.setItem('tasks', JSON.stringify(this.state.tasks)); });
+            if (todo.taskId === task.taskId)
+                return { ...todo, task: task.task };
+            return todo;
+        })
+        this.setState({ tasks: editedTodos }, () => { localStorage.setItem('tasks', JSON.stringify(this.state.tasks)); });
     }
 
     markComplete(completeId)
     {
-        let copy = this.state.tasks.map(task => task);
-        let index;
-        for (let i = 0; i < this.state.tasks.length; ++i)
+        const updatedTodos = this.state.tasks.map(task =>
         {
-            if (this.state.tasks[i].taskId === completeId)
-            {
-                index = i;
-                break;
-            }
-        }
-        copy[index] = { task: copy[index].task, taskId: copy[index].taskId, isCompleted: true }
-        this.setState({ tasks: copy }, () => { localStorage.setItem('tasks', JSON.stringify(this.state.tasks)); });
+            if (task.taskId === completeId)
+                return { ...task, isCompleted: !task.isCompleted };
+            return task;
+        })
+
+        this.setState({ tasks: updatedTodos }, () => { localStorage.setItem('tasks', JSON.stringify(this.state.tasks)); });
     }
 
     render()
