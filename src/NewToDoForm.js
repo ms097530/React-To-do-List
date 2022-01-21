@@ -6,6 +6,8 @@ class NewToDoForm extends Component
 {
     constructor(props)
     {
+        // props:
+        // addTask - method to add a task to ToDoList
         super(props);
         this.state = { task: '' };
         this.handleSubmit = this.handleSubmit.bind(this);

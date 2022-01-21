@@ -9,6 +9,11 @@ class ToDoList extends Component
     constructor(props)
     {
         super(props);
+        // get tasks from localStorage if there are any tasks there, if not initialize to empty array
+        // each task has the following properties:
+        // task: string representing what the todo entails
+        // taskId: used for quickly find given task and as key
+        // isCompleted: boolean used for styling when user marks a todo as complete
         this.state = { tasks: localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [] };
         this.addTask = this.addTask.bind(this);
         this.removeTask = this.removeTask.bind(this);
